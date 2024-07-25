@@ -1,23 +1,17 @@
 import { useState, useEffect } from 'react';
-// import { url } from '../utils/constants';
 
-const useFetchBookings = (url) => {
-  const [documents, setDocuments] = useState({
-    title: "",
-    description: ""
-  });
+const useFetchDocuments = (url) => {
+  const [documents, setDocuments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchBookings = async () => {
+    const fetchDocuments = async () => {
       try {
-        const response = await fetch(`${url}/api/shipments`);
+        const response = await fetch(`${url}/api/documents`);
         const data = await response.json();
-        setDocuments({
-            title,
-            description,
-        });
+        console.log("Data of documents: ", data);
+        setDocuments(data);
       } catch (err) {
         setError(err);
       } finally {
@@ -25,10 +19,10 @@ const useFetchBookings = (url) => {
       }
     };
 
-    fetchBookings();
+    fetchDocuments();
   }, [url]);
 
   return { documents, loading, error };
 };
 
-export default useFetchBookings;
+export default useFetchDocuments;

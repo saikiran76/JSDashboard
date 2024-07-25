@@ -8,6 +8,9 @@ import useFetchShipments from '../hooks/useFetchShipments';
 import { MdDashboard } from "react-icons/md";
 import { SiGoogleanalytics } from "react-icons/si";
 import { useState } from 'react';
+import LatestDocuments from '../components/Documents';
+import useFetchDocuments from '../hooks/useFetchDocuments';
+import Announcements from '../components/Announcements';
 
 function Home() {
   const url = 'http://localhost:4000';
@@ -16,10 +19,12 @@ function Home() {
   const { bookings, loading: bookingsLoading, error: bookingsError } =
     useFetchBookings(url);
   const { shipments, loading: shipmentsLoading, error: shipmentsError } = useFetchShipments(url);
+  const { documents, loading: documentsLoading, error: documentsError} = useFetchDocuments(url)
+  console.log("passing shipments: ", shipments)
+  console.log("passing docs: ", documents)
 
   const [transportMode, setTransportMode] = useState('Sea');
 
-  
   const {
     originPortChartData,
     destinationPortChartData,
@@ -71,13 +76,14 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="flex flex-row p-4">
+        <div className="flex flex-row p-4 h-[20rem]">
           <div className="flex-1 bg-white shadow-md rounded-md p-4 mr-4">
             <h2 className="text-xl font-bold">Latest Documents</h2>
+            <LatestDocuments docs={documents}/>
             
           </div>
           <div className="flex-1 bg-white shadow-md rounded-md p-4">
-            <h2 className="text-xl font-bold">Announcements</h2>
+            <Announcements/>
             
           </div>
         </div>

@@ -1,16 +1,13 @@
 import express from "express";
 import { json } from "body-parser";
 import mongoose from "mongoose"
-// const router = express.Router();
+
 const app = express()
 
 import { ShipmentRouter } from "./routes/shipments";
 import { DocumentRouter } from "./routes/document";
 import { LocationRouter } from "./routes/locations";
 
-// app.get("/", (req, res)=>{
-//     console.log("Hey there")
-// })
 app.use(json())
 app.use('/api/shipments', ShipmentRouter);
 app.use('/api/documents', DocumentRouter);
