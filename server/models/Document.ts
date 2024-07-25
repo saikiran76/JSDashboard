@@ -17,7 +17,17 @@ interface DocumentDoc extends mongoose.Document{
 const DocumentSchema = new mongoose.Schema({
   title: String,
   description: String,
-});
+},
+// {
+//   toJSON: {
+//     transform(doc, ret) {
+//       ret.id = ret._id;
+//       delete ret.created_at;
+//       delete ret.updated_at;
+//     },
+//   },
+// }
+);
 
 const Document = mongoose.model<DocumentDoc, DocModel>('Document', DocumentSchema);
 
