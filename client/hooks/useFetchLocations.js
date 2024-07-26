@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useFetchLocations = (url) => {
+const useFetchLocations = (url, milestone) => {
   const [locations, setLocations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -8,9 +8,15 @@ const useFetchLocations = (url) => {
   useEffect(() => {
     const fetchLocations = async () => {
       try {
-        const response = await fetch(`${url}/api/locations`);
+        let status;
+        const response = await fetch(`/api/locations${milestone ? `?status=${milestone}` : ''}`);
         const data = await response.json();
-        setLocations(data);
+        if (Array.isArray(data.locations)) {
+          setLocations(data.locations); 
+        } else {
+          setLocations(data.map(shipment => shipment.locations).flat()); 
+        }
+        // setLocations(data);
       } catch (err) {
         setError(err);
       } finally {
@@ -19,7 +25,7 @@ const useFetchLocations = (url) => {
     };
 
     fetchLocations();
-  }, [url]);
+  }, [url, milestone]);
 
   return { locations, loading, error };
 };
