@@ -40,61 +40,61 @@ const MapComponent = ({ setMapObject }) => {
     setSelectedMilestone(event.target.value);
   };
 
-  const center = locations.length > 0 ? [locations[0].long, locations[0].lat] : [0, 0];
-
   useEffect(() => {
-    const initializeMap = () => {
-      const initialMap = new Map({
-        layers: [
-          new TileLayer({
-            source: new OSM(),
-          }),
-        ],
-        view: new View({
-          center: fromLonLat(center),
-          zoom: 2,
-        }),
-      });
-      initialMap.setTarget(mapContainer.current);
-      setMap(initialMap);
-      setMapObject(initialMap);
-    };
+    if (locations.length === 0) return;
+    
+    const center = fromLonLat([locations[0].long, locations[0].lat]);
 
-    initializeMap();
+    const initialMap = new Map({
+      target: mapContainer.current,
+      layers: [
+        new TileLayer({
+          source: new OSM(),
+        }),
+      ],
+      view: new View({
+        center,
+        zoom: 2,
+      }),
+    });
+
+    setMap(initialMap);
+    setMapObject(initialMap);
 
     return () => {
-      if (map) {
-        map.setTarget(undefined);
-        setMapObject(null);
-      }
+      initialMap.setTarget(null);
     };
-  }, [center, setMapObject]);
+  }, [locations, setMapObject]);
 
   useEffect(() => {
-    if (map && locations.length > 0) {
-      const vectorSource = new VectorSource();
-      const vectorLayer = new VectorLayer({
-        source: vectorSource,
-        style: new Style({
-          image: new Icon({
-            anchor: [0.5, 1],
-            src: 'https://openlayers.org/en/latest/examples/data/icon.png',
-          }),
+    if (!map || locations.length === 0) return;
+
+    const vectorSource = new VectorSource();
+    const vectorLayer = new VectorLayer({
+      source: vectorSource,
+      style: new Style({
+        image: new Icon({
+          anchor: [0.5, 1],
+          src: 'https://openlayers.org/en/latest/examples/data/icon.png',
         }),
+      }),
+    });
+
+    map.addLayer(vectorLayer);
+
+    locations.forEach(location => {
+      const feature = new Feature({
+        geometry: new Point(fromLonLat([location.long, location.lat])),
+        name: location.location,
       });
+      vectorSource.addFeature(feature);
+    });
 
-      map.addLayer(vectorLayer);
+    map.getView().fit(vectorSource.getExtent(), { duration: 1000 });
 
-      locations.forEach(location => {
-        const feature = new Feature({
-          geometry: new Point(fromLonLat([location.long, location.lat])),
-          name: location.location,
-        });
-        vectorSource.addFeature(feature);
-      });
-
-      map.getView().fit(vectorSource.getExtent(), { duration: 1000 });
-    }
+    return () => {
+      map.removeLayer(vectorLayer);
+    };
   }, [locations, map]);
 
   if (locationsLoading || shipmentsLoading) {
