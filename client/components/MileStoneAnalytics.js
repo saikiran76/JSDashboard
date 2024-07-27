@@ -5,7 +5,6 @@ const List = ({ property }) => {
   const url = 'http://localhost:4000';
   const { shipments, loading, error } = useFetchShipments(url);
 
-  // Aggregate the data based on the provided property
   const aggregatedData = shipments.reduce((acc, shipment) => {
     const key = shipment[property];
     if (key) {
@@ -14,7 +13,6 @@ const List = ({ property }) => {
     return acc;
   }, {});
 
-  // Convert the aggregated data object to an array
   const dataArray = Object.entries(aggregatedData).map(([value, count]) => ({ value, count }));
 
   if (loading) {
