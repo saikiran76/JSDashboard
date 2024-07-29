@@ -3,7 +3,7 @@ import useFetchShipments from '../hooks/useFetchShipments';
 
 
 const List = ({ property }) => {
-  const url = 'http://localhost:4000';
+  const url = 'https://jsdashboard.onrender.com';
   const { shipments, loading, error } = useFetchShipments(url);
 
   const aggregatedData = shipments.reduce((acc, shipment) => {

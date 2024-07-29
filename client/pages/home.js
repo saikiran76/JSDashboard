@@ -13,7 +13,7 @@ import Toggler from '../components/Toggler';
 import { useSelector } from 'react-redux';
 
 function Home() {
-  const url = 'http://localhost:4000';
+  const url = 'https://jsdashboard.onrender.com';
   const { locations, loading: locationsLoading, error: locationsError } =
     useFetchLocations(url);
   const { bookings, loading: bookingsLoading, error: bookingsError } =

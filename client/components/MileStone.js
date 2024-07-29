@@ -6,7 +6,7 @@ import useFetchShipments from '../hooks/useFetchShipments';
 Chart.register(ArcElement, Tooltip, Legend);
 
 const MilestonesChart = () => {
-  const url = 'http://localhost:4000';
+  const url = 'https://jsdashboard.onrender.com';
   const { shipments, loading: shipmentsLoading, error: shipmentsError } = useFetchShipments(url);
 
   const milestoneCounts = {

@@ -14,7 +14,7 @@ const Analytics = () => {
     const [dateProperty, setDateProperty] = useState('');
     // const [period, setPeriod] = useState('');
     const [filteredData, setFilteredData] = useState([]);
-    const url = "http://localhost:4000";
+    const url = "https://jsdashboard.onrender.com";
     const { shipments, loading, error } = useFetchShipments(url);
   
     const handleFilter = () => {

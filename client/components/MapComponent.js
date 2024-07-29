@@ -23,7 +23,7 @@ const MapComponent = ({ setMapObject }) => {
   const [map, setMap] = useState(null);
   const [selectedMilestone, setSelectedMilestone] = useState("");
 
-  const url = 'http://localhost:4000';
+  const url = 'https://jsdashboard.onrender.com';
 
   const { locations, loading: locationsLoading, error: locationsError } = useFetchLocations(url, selectedMilestone);
   const { shipments, loading: shipmentsLoading, error: shipmentsError } = useFetchShipments(url);
