@@ -7,7 +7,7 @@ import f4 from '../assets/f4.png';
 const Bookings = ({ bookings }) => {
   return (
     <div className="flex flex-row flex-wrap gap-3 p-4">
-      <div className="flex w-full md:w-[25.25%] flex-col rounded-lg p-4 shadow-md hover:bg-gray-200">
+      <div className="flex w-full md:w-[24.25%] flex-col rounded-lg p-4 shadow-md hover:bg-gray-200">
         <div className="flex gap-[6rem] md:gap-[3rem]">
           <div>
             <h2 className="text-[0.9rem] md:text-base">Total Bookings</h2>
@@ -16,7 +16,7 @@ const Bookings = ({ bookings }) => {
           <Image alt='i4' src={f1} width={50} />
         </div>
       </div>
-      <div className="flex w-full md:w-[25.25%] flex-col rounded-lg p-4 shadow-md hover:bg-gray-200">
+      <div className="flex w-full md:w-[24%] flex-col rounded-lg p-4 shadow-md hover:bg-gray-200">
         <div className="flex gap-[6rem] md:gap-[3rem]">
           <div>
             <h2 className="text-sm">Bookings Utilized</h2>
@@ -25,7 +25,7 @@ const Bookings = ({ bookings }) => {
           <Image alt='i3' src={f2} height={50} />
         </div>
       </div>
-      <div className="flex w-full md:w-[25.1%] flex-col rounded-lg p-4 shadow-md hover:bg-gray-200">
+      <div className="flex w-full md:w-[24%] flex-col rounded-lg p-4 shadow-md hover:bg-gray-200">
         <div className="flex gap-[6rem] md:gap-[3rem]">
           <div>
             <h2 className="text-xs">Booking Cancelled</h2>
@@ -34,8 +34,8 @@ const Bookings = ({ bookings }) => {
           <Image alt='i1' src={f3} height={50} />
         </div>
       </div>
-      <div className="flex w-full md:w-[24.25%] flex-col rounded-lg p-4 shadow-md hover:bg-gray-200">
-        <div className="flex gap-[6rem] md:gap-[3rem]">
+      <div className="flex w-full md:w-[24%] flex-col rounded-lg p-4 shadow-md hover:bg-gray-200">
+        <div className="flex gap-[6rem] md:gap-[5rem]">
           <div>
             <h2 className="text-base">Utilization</h2>
             <p className="text-lg font-bold">{bookings.utilization}%</p>

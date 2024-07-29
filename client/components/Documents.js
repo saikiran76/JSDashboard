@@ -10,7 +10,9 @@ const LatestDocuments = ({ docs }) => (
         <li key={index} className="className='border-gray-600 mb-2 mt-1 border-b-[1px] p-2 pb-4">
           <div className="flex justify-between">
             <div className="flex gap-3">
-              <Image alt='pdf' src={pdf} />
+              <div className='hidden md:block'>
+                <Image alt='pdf' src={pdf} />
+              </div>
               <div>
                 <p className="font-bold">{doc.title}</p>
                 <p>{doc.description}</p>
