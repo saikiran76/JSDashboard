@@ -10,6 +10,10 @@
 - Tailwind CSS 💨 (visit the official docs: `https://tailwindcss.com/`)
 - react charts library for charts 
 
+## Deployment Platforms
+- Vercel (for deploying the frontend)
+- Render as web service (for deploying the backend)
+
 ## Local Setup
 - clone using `git clone <git url>`
 - cd into the folder
