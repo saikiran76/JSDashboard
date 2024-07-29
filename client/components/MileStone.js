@@ -56,7 +56,7 @@ const MilestonesChart = () => {
   return (
     <div className="flex w-full flex-col items-center p-2 md:w-1/5">
       <h3 className="mb-4 mt-3 font-bold">MileStones</h3>
-      <div className="relative ml-[20rem] mt-3 h-48 w-[30rem]">
+      <div className="relative ml-[7rem] md:ml-[20rem] mb-[2rem] mt-3 h-48 w-[30rem]">
         {shipmentsLoading ? <Loader /> : <Pie data={data} options={options} />}
       </div>
     </div>

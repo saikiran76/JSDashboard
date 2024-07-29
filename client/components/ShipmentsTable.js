@@ -69,7 +69,7 @@ const ShipmentsTable = ({ data }) => {
           </tbody>
         </table>
       </div>
-      <div className="mt-4 flex items-center justify-between">
+      <div className="mt-4 flex items-center justify-between text-sm md:text-base">
         <div>
           <label>
             Rows per page:
@@ -86,23 +86,23 @@ const ShipmentsTable = ({ data }) => {
             </select>
           </label>
         </div>
-        <div>
+        <div className='mr-2 md:mr-2'>
           <button
             onClick={() => paginate(currentPage - 1)}
             disabled={currentPage === 1}
-            className="mr-2 rounded bg-gray-300 px-3 py-1"
+            className="mr-2 rounded bg-gray-300 px-3 py-1 text-sm md:text-base"
           >
             Previous
           </button>
           <button
             onClick={() => paginate(currentPage + 1)}
             disabled={currentPage === totalPages}
-            className="rounded bg-gray-300 px-3 py-1"
+            className="rounded bg-gray-300 px-3 py-1 mt-[1rem] md:mt-0 text-sm md:text-base"
           >
             Next
           </button>
         </div>
-        <div>
+        <div className='text-sm'>
           Page {currentPage} of {totalPages}
         </div>
       </div>

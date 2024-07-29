@@ -24,7 +24,7 @@ const List = ({ property }) => {
   }
 
   return (
-    <div className="w-[32%] rounded-lg bg-white p-4 shadow-lg">
+    <div className="md:w-[32%] w-full rounded-lg bg-white p-4 shadow-lg">
       <h2 className="mb-2 text-lg font-bold">
         {property.charAt(0).toUpperCase() + property.slice(1)}
       </h2>

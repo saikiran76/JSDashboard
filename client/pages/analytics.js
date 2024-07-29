@@ -120,7 +120,7 @@ const Analytics = () => {
 
       <div className="flex flex-col gap-4 md:flex-row">
         <div className="relative ml-3 w-full rounded-lg bg-white p-3 shadow-md md:w-[50%]">
-          <div className="absolute right-4 top-6 rounded-md border-[1.5px] border-gray-200 p-2 pl-4 pr-4 text-sm text-gray-500">
+          <div className="absolute right-4 top-6 rounded-md border-[1.5px] border-gray-200 p-2 pl-4 pr-4 text-sm text-gray-500 hidden md:block">
             IN-TRANSIT (463)
           </div>
           <MilestonesChart />
@@ -131,7 +131,7 @@ const Analytics = () => {
         </div>
       </div>
 
-      <div className="flex flex-wrap items-start gap-4 bg-gray-100 p-4 shadow-md">
+      <div className="flex flex-wrap flex-col md:flex-row items-start gap-4 bg-gray-100 p-4 shadow-md">
         {properties.map((property) => (
           <List key={property} property={property} />
         ))}
