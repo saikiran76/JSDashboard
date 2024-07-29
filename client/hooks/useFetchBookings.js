@@ -17,15 +17,15 @@ const useFetchBookings = (url) => {
         const response = await fetch(`${url}/api/shipments`);
         const data = await response.json();
         const total = data.length;
-        const utilized = data.filter(item => item.booking_status === "BOOKED").length;
-        const cancelled = data.filter(item => item.booking_status === "CANCELLED").length;
+        const utilized = data.filter((item) => item.booking_status === 'BOOKED').length;
+        const cancelled = data.filter((item) => item.booking_status === 'CANCELLED').length;
         const utilization = total > 0 ? (utilized / total) * 100 : 0;
 
         setBookings({
           total,
           utilized,
           cancelled,
-          utilization
+          utilization,
         });
       } catch (err) {
         setError(err);

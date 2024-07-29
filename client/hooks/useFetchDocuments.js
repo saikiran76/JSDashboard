@@ -10,7 +10,7 @@ const useFetchDocuments = (url) => {
       try {
         const response = await fetch(`${url}/api/documents`);
         const data = await response.json();
-        console.log("Data of documents: ", data);
+        console.log('Data of documents: ', data);
         setDocuments(data);
       } catch (err) {
         setError(err);

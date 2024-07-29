@@ -9,12 +9,14 @@ const useFetchLocations = (url, milestone) => {
     const fetchLocations = async () => {
       try {
         let status;
-        const response = await fetch(`${url}/api/locations${milestone ? `?status=${milestone}` : ''}`);
+        const response = await fetch(
+          `${url}/api/locations${milestone ? `?status=${milestone}` : ''}`,
+        );
         const data = await response.json();
         if (Array.isArray(data.locations)) {
-          setLocations(data.locations); 
+          setLocations(data.locations);
         } else {
-          setLocations(data.map(shipment => shipment.locations).flat()); 
+          setLocations(data.map((shipment) => shipment.locations).flat());
         }
         // setLocations(data);
       } catch (err) {

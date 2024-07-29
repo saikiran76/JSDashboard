@@ -2,6 +2,7 @@ import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
 import useFetchShipments from '../hooks/useFetchShipments';
+import { Loader } from './Loader';
 
 Chart.register(ArcElement, Tooltip, Legend);
 
@@ -9,13 +10,13 @@ const DelayChart = () => {
   const url = 'https://jsdashboard.onrender.com';
   const { shipments, loading: shipmentsLoading, error: shipmentsError } = useFetchShipments(url);
 
-  if (shipmentsLoading) return <div>Loading...</div>;
-  if (shipmentsError) return <div>Error loading data.</div>;
+  if (shipmentsLoading) return <Loader />;
+  if (shipmentsError) return <Loader />;
 
   let onTimeCount = 0;
   let lateCount = 0;
 
-  shipments.forEach(item => {
+  shipments.forEach((item) => {
     const estimatedArrival = new Date(item.estimated_time_of_arrival);
     const actualArrival = new Date(item.actual_time_of_arrival);
 
@@ -52,9 +53,9 @@ const DelayChart = () => {
   };
 
   return (
-    <div className="flex flex-col items-center w-full md:w-1/5 p-2">
-      <div className="relative w-[30rem] h-48 mt-3 ml-[20rem]">
-        <h3 className="font-bold ml-8 mb-4">Timelines</h3>
+    <div className="flex w-full flex-col items-center p-2 md:w-1/5">
+      <div className="relative ml-[20rem] mt-3 h-48 w-[30rem]">
+        <h3 className="mb-4 ml-8 font-bold">Timelines</h3>
         <Pie data={data} options={options} />
       </div>
     </div>

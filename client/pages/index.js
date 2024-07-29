@@ -1,7 +1,7 @@
-const Root = () =>{
-    return(
-        <div className="font-bold text-red-600">Root Route</div>
-    )
-}
+import Home from './home';
+
+const Root = () => {
+  return <Home />;
+};
 
 export default Root;

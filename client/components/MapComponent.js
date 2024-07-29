@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Loader } from './Loader';
 import useFetchShipments from '../hooks/useFetchShipments';
 import useFetchLocations from '../hooks/useFetchLocations';
 import 'ol/ol.css';
@@ -21,16 +22,20 @@ import van from '../assets/van.png';
 const MapComponent = ({ setMapObject }) => {
   const mapContainer = useRef();
   const [map, setMap] = useState(null);
-  const [selectedMilestone, setSelectedMilestone] = useState("");
+  const [selectedMilestone, setSelectedMilestone] = useState('');
 
   const url = 'https://jsdashboard.onrender.com';
 
-  const { locations, loading: locationsLoading, error: locationsError } = useFetchLocations(url, selectedMilestone);
+  const {
+    locations,
+    loading: locationsLoading,
+    error: locationsError,
+  } = useFetchLocations(url, selectedMilestone);
   const { shipments, loading: shipmentsLoading, error: shipmentsError } = useFetchShipments(url);
 
   const milestones = [];
 
-  shipments.forEach(item => {
+  shipments.forEach((item) => {
     if (!milestones.includes(item.milestone)) {
       milestones.push(item.milestone);
     }
@@ -42,7 +47,7 @@ const MapComponent = ({ setMapObject }) => {
 
   useEffect(() => {
     if (locations.length === 0) return;
-    
+
     const center = fromLonLat([locations[0].long, locations[0].lat]);
 
     const initialMap = new Map({
@@ -82,7 +87,7 @@ const MapComponent = ({ setMapObject }) => {
 
     map.addLayer(vectorLayer);
 
-    locations.forEach(location => {
+    locations.forEach((location) => {
       const feature = new Feature({
         geometry: new Point(fromLonLat([location.long, location.lat])),
         name: location.location,
@@ -98,7 +103,7 @@ const MapComponent = ({ setMapObject }) => {
   }, [locations, map]);
 
   if (locationsLoading || shipmentsLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (locationsError || shipmentsError) {
@@ -106,12 +111,12 @@ const MapComponent = ({ setMapObject }) => {
   }
 
   return (
-    <div ref={mapContainer} className="w-full h-full relative">
-      <div className="absolute top-6 left-10 z-20">
+    <div ref={mapContainer} className="relative h-full w-full">
+      <div className="absolute left-10 top-6 z-20">
         <select
           value={selectedMilestone}
           onChange={handleMilestoneChange}
-          className="p-2 border rounded-md bg-white shadow-md"
+          className="rounded-md border bg-white p-2 shadow-md"
         >
           <option value="">Select Milestone</option>
           {milestones.map((milestone, index) => (
@@ -122,7 +127,7 @@ const MapComponent = ({ setMapObject }) => {
         </select>
       </div>
 
-      <div className="bg-transparent absolute top-6 right-4 z-20">
+      <div className="absolute right-4 top-6 z-20 bg-transparent">
         <Image src={ship} alt="Ship" width={45} height={45} />
         <Image src={plane} alt="Plane" width={45} height={45} />
         <Image src={van} alt="Van" width={45} height={45} />

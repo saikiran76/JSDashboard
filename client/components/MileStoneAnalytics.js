@@ -1,7 +1,6 @@
 import React from 'react';
 import useFetchShipments from '../hooks/useFetchShipments';
 
-
 const List = ({ property }) => {
   const url = 'https://jsdashboard.onrender.com';
   const { shipments, loading, error } = useFetchShipments(url);
@@ -25,8 +24,10 @@ const List = ({ property }) => {
   }
 
   return (
-    <div className="p-4 bg-white rounded-lg shadow-lg w-[32%]">
-      <h2 className="font-bold text-lg mb-2">{property.charAt(0).toUpperCase() + property.slice(1)}</h2>
+    <div className="w-[32%] rounded-lg bg-white p-4 shadow-lg">
+      <h2 className="mb-2 text-lg font-bold">
+        {property.charAt(0).toUpperCase() + property.slice(1)}
+      </h2>
       <div className="overflow-y-auto" style={{ maxHeight: '300px' }}>
         {dataArray.map(({ value, count }, index) => (
           <div key={index} className="flex justify-between border-b py-2 text-sm">
@@ -40,4 +41,3 @@ const List = ({ property }) => {
 };
 
 export default List;
-

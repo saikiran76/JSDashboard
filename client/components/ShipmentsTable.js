@@ -13,14 +13,14 @@ const ShipmentsTable = ({ data }) => {
   }, [currentPage, rowsPerPage, data]);
 
   const headers = [
-    { label: "HBL#", key: "hbl_no" },
-    { label: "MBL#", key: "mbl_no" },
-    { label: "PO# / REF#", key: "po_ref_no" },
-    { label: "Recipt", key: "recipt" },
-    { label: "Loading", key: "loading" },
-    { label: "Discharge", key: "discharge" },
-    { label: "Delivery", key: "delivery" },
-    { label: "Booking#", key: "booking_no" }
+    { label: 'HBL#', key: 'hbl_no' },
+    { label: 'MBL#', key: 'mbl_no' },
+    { label: 'PO# / REF#', key: 'po_ref_no' },
+    { label: 'Recipt', key: 'recipt' },
+    { label: 'Loading', key: 'loading' },
+    { label: 'Discharge', key: 'discharge' },
+    { label: 'Delivery', key: 'delivery' },
+    { label: 'Booking#', key: 'booking_no' },
   ];
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -28,18 +28,26 @@ const ShipmentsTable = ({ data }) => {
   const totalPages = Math.ceil(data.length / rowsPerPage);
 
   return (
-    <div className="p-4 bg-white rounded-lg shadow-lg">
-      <div className="flex justify-between items-center mb-4">
-        <CSVLink data={data} headers={headers} filename="shipments.csv" className="bg-red-500 text-white px-4 py-2 rounded">
+    <div className="rounded-lg bg-white p-4 shadow-lg">
+      <div className="mb-4 flex items-center justify-between">
+        <CSVLink
+          data={data}
+          headers={headers}
+          filename="shipments.csv"
+          className="rounded bg-red-500 px-4 py-2 text-white"
+        >
           Download
         </CSVLink>
       </div>
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border border-gray-200">
+        <table className="min-w-full border border-gray-200 bg-white">
           <thead>
             <tr>
-              {headers.map(header => (
-                <th key={header.key} className="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              {headers.map((header) => (
+                <th
+                  key={header.key}
+                  className="border-b border-gray-200 bg-gray-50 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+                >
                   {header.label}
                 </th>
               ))}
@@ -48,8 +56,11 @@ const ShipmentsTable = ({ data }) => {
           <tbody>
             {currentRows.map((shipment, index) => (
               <tr key={index}>
-                {headers.map(header => (
-                  <td key={header.key} className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                {headers.map((header) => (
+                  <td
+                    key={header.key}
+                    className="whitespace-nowrap px-6 py-4 text-sm text-gray-900"
+                  >
                     {shipment[header.key]}
                   </td>
                 ))}
@@ -58,12 +69,16 @@ const ShipmentsTable = ({ data }) => {
           </tbody>
         </table>
       </div>
-      <div className="flex justify-between items-center mt-4">
+      <div className="mt-4 flex items-center justify-between">
         <div>
           <label>
             Rows per page:
-            <select value={rowsPerPage} onChange={(e) => setRowsPerPage(Number(e.target.value))} className="ml-2">
-              {[10, 25, 50, 100].map(size => (
+            <select
+              value={rowsPerPage}
+              onChange={(e) => setRowsPerPage(Number(e.target.value))}
+              className="ml-2"
+            >
+              {[10, 25, 50, 100].map((size) => (
                 <option key={size} value={size}>
                   {size}
                 </option>
@@ -75,14 +90,14 @@ const ShipmentsTable = ({ data }) => {
           <button
             onClick={() => paginate(currentPage - 1)}
             disabled={currentPage === 1}
-            className="px-3 py-1 bg-gray-300 rounded mr-2"
+            className="mr-2 rounded bg-gray-300 px-3 py-1"
           >
             Previous
           </button>
           <button
             onClick={() => paginate(currentPage + 1)}
             disabled={currentPage === totalPages}
-            className="px-3 py-1 bg-gray-300 rounded"
+            className="rounded bg-gray-300 px-3 py-1"
           >
             Next
           </button>

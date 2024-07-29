@@ -1,25 +1,24 @@
 import React from 'react';
 import { formatDateTime } from '../utils/helper';
 import Image from 'next/image';
-import pdf from '../assets/Pdf.png'
+import pdf from '../assets/Pdf.png';
 
 const LatestDocuments = ({ docs }) => (
-  <div className="flex-1 bg-white shadow-md p-4 mr-2 overflow-y-auto h-[15rem] text-xs">
+  <div className="mr-2 h-[15rem] flex-1 overflow-y-auto bg-white p-4 text-xs shadow-md">
     <ul>
       {docs.map((doc, index) => (
-        <li key={index} className="mb-2 mt-1 p-2 className='border-gray-600 border-b-[1px] pb-4">
-          <div className='flex justify-between'>
-            <div className='flex gap-3'>
-              <Image src={pdf}/>
+        <li key={index} className="className='border-gray-600 mb-2 mt-1 border-b-[1px] p-2 pb-4">
+          <div className="flex justify-between">
+            <div className="flex gap-3">
+              <Image src={pdf} />
               <div>
                 <p className="font-bold">{doc.title}</p>
                 <p>{doc.description}</p>
               </div>
             </div>
             <p>{formatDateTime(doc.created_at)}</p>
-            
           </div>
-          
+
           {/* <p className="text-sm text-gray-500">{doc.updated_at}</p> */}
         </li>
       ))}
@@ -28,4 +27,3 @@ const LatestDocuments = ({ docs }) => (
 );
 
 export default LatestDocuments;
-

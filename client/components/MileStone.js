@@ -2,6 +2,7 @@ import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
 import useFetchShipments from '../hooks/useFetchShipments';
+import { Loader } from './Loader';
 
 Chart.register(ArcElement, Tooltip, Legend);
 
@@ -17,12 +18,11 @@ const MilestonesChart = () => {
     RETURNED: 0,
   };
 
-  shipments.forEach(item => {
+  shipments.forEach((item) => {
     if (milestoneCounts[item.milestone] !== undefined) {
       milestoneCounts[item.milestone]++;
     }
   });
-
 
   const data = {
     labels: Object.keys(milestoneCounts),
@@ -49,14 +49,18 @@ const MilestonesChart = () => {
     maintainAspectRatio: false,
   };
 
+  if (shipmentsError) {
+    return <div className="text-red text-center">Error loading</div>;
+  }
+
   return (
-    <div className="flex flex-col items-center w-full md:w-1/5 p-2">
-        <h3 className="font-bold mb-4 mt-3">MileStones</h3>
-        <div className="relative w-[30rem] h-48 mt-3 ml-[20rem]">
-            <Pie data={data} options={options} />
-        </div>
-        </div>
-    );
+    <div className="flex w-full flex-col items-center p-2 md:w-1/5">
+      <h3 className="mb-4 mt-3 font-bold">MileStones</h3>
+      <div className="relative ml-[20rem] mt-3 h-48 w-[30rem]">
+        {shipmentsLoading ? <Loader /> : <Pie data={data} options={options} />}
+      </div>
+    </div>
+  );
 };
 
 export default MilestonesChart;

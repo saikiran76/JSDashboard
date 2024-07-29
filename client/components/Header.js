@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaUserCircle } from "react-icons/fa";
+import { FaUserCircle } from 'react-icons/fa';
 
 const Header = ({ path }) => {
   let title = '';
@@ -16,8 +16,8 @@ const Header = ({ path }) => {
   }
 
   return (
-    <div className="flex flex-row p-4 bg-white shadow-md w-full">
-      <div className="flex-1 flex items-center">
+    <div className="flex w-full flex-row bg-white p-4 shadow-md">
+      <div className="flex flex-1 items-center">
         <h1 className="text-2xl font-bold">{title}</h1>
       </div>
       <div className="flex items-center">

@@ -29,7 +29,7 @@ const DoughnutChart = ({ data, title }) => {
           '#E7E9ED',
           '#9C9191',
           '#CAB8FF',
-          '#FFC400'
+          '#FFC400',
         ],
       },
     ],
@@ -38,7 +38,7 @@ const DoughnutChart = ({ data, title }) => {
   const options = {
     plugins: {
       legend: {
-        display: false, 
+        display: false,
       },
     },
     maintainAspectRatio: false,
@@ -46,7 +46,7 @@ const DoughnutChart = ({ data, title }) => {
 
   const filteredLabels = [];
   const filteredColors = [];
-  
+
   chartData.labels.forEach((label, index) => {
     const value = chartData.datasets[0].data[index];
     if (value > 0) {
@@ -74,4 +74,3 @@ const DoughnutChart = ({ data, title }) => {
 };
 
 export default DoughnutChart;
-

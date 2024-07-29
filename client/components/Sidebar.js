@@ -5,24 +5,27 @@ import { SiGoogleanalytics } from 'react-icons/si';
 
 const Sidebar = () => {
   return (
-    <div className='bg-[#6B120A] rounded-r-[2rem] w-[17%] h-screen'>
-      <ul className='list-none text-white m-5 mt-10'>
-        <li className='flex gap-2 items-center hover:bg-[#7D2F28] cursor-pointer rounded p-3'>
+    <div className="h-screen w-[17%] rounded-r-[2rem] bg-[#6B120A]">
+      <ul className="m-5 mt-10 list-none text-white">
+        <li className="flex cursor-pointer items-center gap-2 rounded p-3 hover:bg-[#7D2F28]">
           <Link href="/home">
-            <div className="flex gap-2 items-center">
-              <MdDashboard />Dashboard
+            <div className="flex items-center gap-2">
+              <MdDashboard />
+              Dashboard
             </div>
           </Link>
         </li>
-        <li className='flex gap-2 items-center hover:bg-[#7D2F28] cursor-pointer rounded p-3'>
+        <li className="flex cursor-pointer items-center gap-2 rounded p-3 hover:bg-[#7D2F28]">
           <Link href="/analytics">
-            <div className="flex gap-2 items-center">
-              <SiGoogleanalytics />Analytics
+            <div className="flex items-center gap-2">
+              <SiGoogleanalytics />
+              Analytics
             </div>
           </Link>
         </li>
-        <li className='flex gap-2 items-center hover:bg-[#7D2F28] cursor-pointer rounded p-3'>
-          <SiGoogleanalytics />Rate Request
+        <li className="flex cursor-pointer items-center gap-2 rounded p-3 hover:bg-[#7D2F28]">
+          <SiGoogleanalytics />
+          Rate Request
         </li>
       </ul>
     </div>
@@ -30,4 +33,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-     

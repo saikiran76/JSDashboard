@@ -10,7 +10,7 @@ const useFetchShipments = (url) => {
       try {
         const response = await fetch(`${url}/api/shipments`);
         const data = await response.json();
-        console.log("Shipmnents data to reduce: ", data)
+        console.log('Shipmnents data to reduce: ', data);
         setShipments(data);
       } catch (error) {
         setError(error);
