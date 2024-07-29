@@ -12,7 +12,7 @@ import useFetchShipments from "../hooks/useFetchShipments";
 const Analytics = () => {
     const [sizeType, setSizeType] = useState('');
     const [dateProperty, setDateProperty] = useState('');
-    const [period, setPeriod] = useState('');
+    // const [period, setPeriod] = useState('');
     const [filteredData, setFilteredData] = useState([]);
     const url = "http://localhost:4000";
     const { shipments, loading, error } = useFetchShipments(url);
@@ -24,9 +24,9 @@ const Analytics = () => {
         filtered = filtered.filter(shipment => shipment.size_type === sizeType);
       }
   
-      if (dateProperty) {
-        filtered = filtered.filter(shipment => new Date(shipment[`${dateProperty}_date`]) >= new Date(period));
-      }
+      // if (dateProperty) {
+      //   filtered = filtered.filter(shipment => new Date(shipment[`${dateProperty}_date`]) >= new Date(period));
+      // }
   
       setFilteredData(filtered);
     };
@@ -45,7 +45,7 @@ const Analytics = () => {
     const properties = ['loading', 'discharge', 'delivery', 'shipper', 'consignee', 'carrier'];
   
     return (
-      <div className="bg-gray-100">
+      <div className="bg-gray-100 w-full">
         <div className="flex gap-8 justify-center mt-4 text-gray-500 text-sm ">
           <div className="flex gap-2 items-center cursor-pointer pb-2 border-red-600 hover:text-red-600 hover:border-b-2 duration-200"><RiShipFill /><p>Sea</p></div>
           <div className="flex gap-2 items-center cursor-pointer pb-2 border-red-600 hover:text-red-600 hover:border-b-2 duration-200"><CiPlane /><p>Air</p></div>
@@ -89,12 +89,12 @@ const Analytics = () => {
   
           <div className="flex gap-3 items-center font-bold ml-5">
             <p>Period</p>
-            <input
+            {/* <input
               type="date"
               value={period}
               onChange={(e) => setPeriod(e.target.value)}
               className="p-[0.6rem] border-gray-300 border-[1px] text-sm rounded-[1.25rem] bg-white w-[10rem] font-semibold"
-            />
+            /> */}
           </div>
   
           <div className="flex gap-3 ml-4">

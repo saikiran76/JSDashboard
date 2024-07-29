@@ -5,12 +5,12 @@ import useFetchBookings from '../hooks/useFetchBookings';
 import PieChart from '../components/PieChart'; 
 import { prepareChartData } from '../components/prepareChartData';
 import useFetchShipments from '../hooks/useFetchShipments';
-import { MdDashboard } from "react-icons/md";
-import { SiGoogleanalytics } from "react-icons/si";
 import { useState } from 'react';
 import LatestDocuments from '../components/Documents';
 import useFetchDocuments from '../hooks/useFetchDocuments';
 import Announcements from '../components/Announcements';
+import Toggler from '../components/Toggler';
+import { useSelector } from 'react-redux';
 
 function Home() {
   const url = 'http://localhost:4000';
@@ -20,6 +20,7 @@ function Home() {
     useFetchBookings(url);
   const { shipments, loading: shipmentsLoading, error: shipmentsError } = useFetchShipments(url);
   const { documents, loading: documentsLoading, error: documentsError} = useFetchDocuments(url)
+  const toggling = useSelector((state) => state.toggle.toggler)
   console.log("passing shipments: ", shipments)
   console.log("passing docs: ", documents)
 
@@ -35,29 +36,7 @@ function Home() {
 
   return (
     <div className='flex gap-2'>
-      <div className='bg-[#6B120A] rounded-r-[2rem] w-[17%] h-screen'>
-        <ul className='list-none text-white m-5 mt-10'>
-          <li className='flex gap-2 items-center hover:bg-[#7D2F28] cursor-pointer rounded p-3'><MdDashboard/>Dashboard</li>
-          <li className='flex gap-2 items-center hover:bg-[#7D2F28] cursor-pointer rounded p-3'><SiGoogleanalytics/>Analytics</li>
-          <li className='flex gap-2 items-center hover:bg-[#7D2F28] cursor-pointer rounded p-3'><SiGoogleanalytics/>Rate Request</li>
-        </ul>
-
-
-      </div>
       <div className="flex flex-col h-screen bg-gray-100">
-        <div className="flex flex-row p-4 bg-white shadow-md">
-          <div className="flex-1 flex items-center">
-            <h1 className="text-2xl font-bold">Dashboard</h1>
-          </div>
-          <div className="flex items-center">
-            <span className="mr-4">Edward William</span>
-            <img
-              src="/path-to-avatar.jpg"
-              alt="Avatar"
-              className="w-10 h-10 rounded-full"
-            />
-          </div>
-        </div>
         <Bookings bookings={bookings} />
         <div className="flex flex-1 p-4">
           <div className="w-full h-96 bg-white shadow-md rounded-md overflow-hidden">
@@ -66,14 +45,19 @@ function Home() {
         </div>
         <div className="flex flex-row p-4">
           <div className="flex-1 bg-white shadow-md rounded-md p-4">
-            <h2 className="text-xl font-bold">Pie Chart Analysis</h2>
-            <div className="flex flex-row space-x-4">
-              <PieChart data={originPortChartData} title="Origin Port" />
-              <PieChart data={destinationPortChartData} title="Destination Port" />
-              <PieChart data={carrierChartData} title="Carrier" />
-              <PieChart data={consigneeOrShipperChartData} title="Consignee or Shipper" />
-              <PieChart data={milestonesChartData} title="Milestones" />
+            <div className='flex gap-[13em] items-center'>
+              <h2 className="text-xl font-bold">Pie Chart Analysis</h2>
+              <Toggler/>
             </div>
+            {
+              !toggling ? 
+            (<div className="flex flex-row space-x-4"><PieChart data={originPortChartData} title="Origin Port" />
+            <PieChart data={destinationPortChartData} title="Destination Port" />
+            <PieChart data={carrierChartData} title="Carrier" />
+            <PieChart data={consigneeOrShipperChartData} title="Consignee or Shipper" />
+            <PieChart data={milestonesChartData} title="Milestones" /></div>) :
+            <h2 className='text-red-600 font-semibold text-center'>Oops!! No Data feed</h2>
+          }
           </div>
         </div>
         <div className="flex flex-row p-4 h-[20rem]">

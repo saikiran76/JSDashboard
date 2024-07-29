@@ -1,6 +1,7 @@
 import React from 'react';
 import useFetchShipments from '../hooks/useFetchShipments';
 
+
 const List = ({ property }) => {
   const url = 'http://localhost:4000';
   const { shipments, loading, error } = useFetchShipments(url);

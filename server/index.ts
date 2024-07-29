@@ -15,7 +15,7 @@ app.use('/api/locations', LocationRouter)
 
 
 const PORT = 4000;
-const dbUri = 'mongodb+srv://root:root@cluster0.o5xqgfb.mongodb.net/shipment_db';
+const dbUri = process.env.MONGO_URL  || "";
 
 const start = async () =>{
     try{

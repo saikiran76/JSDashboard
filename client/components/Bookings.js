@@ -8,7 +8,7 @@ import f4 from '../assets/f4.png'
 const Bookings = ({ bookings }) => {
   return (
     <div className="flex flex-row p-4 gap-3">
-      <div className="flex flex-col w-1/4 p-4 rounded-lg shadow-md hover:bg-gray-200">
+      <div className="flex flex-col w-[25.25%] p-4 rounded-lg shadow-md hover:bg-gray-200">
         <div className="flex gap-[3rem]">
           <div>
             <h2 className="text-base">Total Bookings</h2>
@@ -17,7 +17,7 @@ const Bookings = ({ bookings }) => {
           <Image src={f1} width={50}/>
         </div>
       </div>
-      <div className="flex flex-col w-1/4 p-4 rounded-lg shadow-md hover:bg-gray-200">
+      <div className="flex flex-col w-[25.25%] p-4 rounded-lg shadow-md hover:bg-gray-200">
         <div className="flex gap-[3rem]">
           <div>
             <h2 className="text-sm">Bookings Utilized</h2>
@@ -26,7 +26,7 @@ const Bookings = ({ bookings }) => {
           <Image src={f2} height={50}/>
         </div>
       </div>
-      <div className="flex flex-col w-1/4 p-4 rounded-lg shadow-md hover:bg-gray-200">
+      <div className="flex flex-col w-[25.1%] p-4 rounded-lg shadow-md hover:bg-gray-200">
         <div className="flex gap-[3.5rem]">
           <div>
             <h2 className="text-xs">Booking Cancelled</h2>
@@ -36,7 +36,7 @@ const Bookings = ({ bookings }) => {
         </div>
         
       </div>
-      <div className="flex flex-col w-1/4  p-4 rounded-lg shadow-md hover:bg-gray-200">
+      <div className="flex flex-col w-[24.5%] p-4 rounded-lg shadow-md hover:bg-gray-200">
         <div className="flex gap-[6rem]">
           <div>
             <h2 className="text-base">Utilization</h2>
