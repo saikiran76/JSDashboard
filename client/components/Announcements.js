@@ -7,7 +7,7 @@ const Announcements = () => (
     <h3 className="mb-4 text-sm font-bold">Announcements</h3>
     <p className="text-sm">Soon you will see the latest announcements/new in this section.</p>
     <div className="ml-[35%] mt-[2.25rem]">
-      <Image src={mic} height={130} />
+      <Image alt="announce" src={mic} height={130} />
     </div>
   </div>
 );

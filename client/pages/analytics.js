@@ -14,7 +14,7 @@ const Analytics = () => {
   const [dateProperty, setDateProperty] = useState('');
   const [filteredData, setFilteredData] = useState([]);
   const url = 'https://jsdashboard.onrender.com';
-  const { shipments, loading, error } = useFetchShipments(url);
+  const { shipments, loading } = useFetchShipments(url);
 
   const handleFilter = () => {
     let filtered = shipments;
@@ -29,7 +29,6 @@ const Analytics = () => {
   const handleCancel = () => {
     setSizeType('');
     setDateProperty('');
-    setPeriod('');
     setFilteredData(shipments);
   };
 

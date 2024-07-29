@@ -10,7 +10,7 @@ const LatestDocuments = ({ docs }) => (
         <li key={index} className="className='border-gray-600 mb-2 mt-1 border-b-[1px] p-2 pb-4">
           <div className="flex justify-between">
             <div className="flex gap-3">
-              <Image src={pdf} />
+              <Image alt='pdf' src={pdf} />
               <div>
                 <p className="font-bold">{doc.title}</p>
                 <p>{doc.description}</p>
@@ -18,8 +18,6 @@ const LatestDocuments = ({ docs }) => (
             </div>
             <p>{formatDateTime(doc.created_at)}</p>
           </div>
-
-          {/* <p className="text-sm text-gray-500">{doc.updated_at}</p> */}
         </li>
       ))}
     </ul>
