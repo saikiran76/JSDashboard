@@ -1,4 +1,4 @@
-# Products table and stats
+# Analytics Dashboard
 
 ## Libraries used/ Tech-stack
 - Nextjs ⚛️
