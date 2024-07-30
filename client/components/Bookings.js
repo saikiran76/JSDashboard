@@ -9,36 +9,36 @@ const Bookings = ({ bookings }) => {
     <div className="flex flex-row flex-wrap gap-3 p-4">
       <div className="flex w-full md:w-[24.25%] flex-col rounded-lg p-4 shadow-md hover:bg-gray-200">
         <div className="flex gap-[6rem] md:gap-[4rem]">
-          <div>
-            <h2 className="text-[0.9rem] md:text-base">Total Bookings</h2>
-            <p className="text-[1rem] md:text-lg font-bold">{bookings.total} Bookings</p>
+          <div className='block md:flex md:flex-col md:justify-between'>
+            <h2 className="text-[0.9rem] md:text-[0.85rem]">Total Bookings</h2>
+            <p className="text-[1rem] md:text-[0.94rem] font-bold">{bookings.total} Bookings</p>
           </div>
           <Image alt='i4' src={f1} width={50} />
         </div>
       </div>
       <div className="flex w-full md:w-[24%] flex-col rounded-lg p-4 shadow-md hover:bg-gray-200">
         <div className="flex gap-[6rem] md:gap-[4rem]">
-          <div>
-            <h2 className="text-sm">Bookings Utilized</h2>
-            <p className="text-lg font-bold">{bookings.utilized} Bookings</p>
+          <div className='block md:flex md:flex-col md:justify-between'>
+            <h2 className="text-[0.9rem] md:text-[0.7rem]">Bookings Utilized</h2>
+            <p className="text-[1rem] md:text-[1rem] font-bold">{bookings.utilized} Bookings</p>
           </div>
           <Image alt='i3' src={f2} height={50} />
         </div>
       </div>
       <div className="flex w-full md:w-[24%] flex-col rounded-lg p-4 shadow-md hover:bg-gray-200">
         <div className="flex gap-[6rem] md:gap-[4rem]">
-          <div>
-            <h2 className="text-xs">Booking Cancelled</h2>
-            <p className="text-lg font-bold">{bookings.cancelled} Bookings</p>
+          <div className='block md:flex md:flex-col md:justify-between'>
+            <h2 className="text-[0.9rem] md:text-[0.65rem]">Booking Cancelled</h2>
+            <p className="text-[1rem] md:text-[1rem] font-bold">{bookings.cancelled} Bookings</p>
           </div>
           <Image alt='i1' src={f3} height={50} />
         </div>
       </div>
       <div className="flex w-full md:w-[24%] flex-col rounded-lg p-4 shadow-md hover:bg-gray-200">
-        <div className="flex gap-[6rem] md:gap-[6rem]">
-          <div>
-            <h2 className="text-base">Utilization</h2>
-            <p className="text-lg font-bold">{bookings.utilization}%</p>
+        <div className="flex gap-[6rem] md:gap-[7rem]">
+          <div className='block md:flex md:flex-col md:justify-between'>
+            <h2 className="text-[0.9rem] md:text-[0.65rem]">Utilization</h2>
+            <p className="text-[1rem] md:text-[1rem] font-bold">{bookings.utilization}%</p>
           </div>
           <Image alt='i2' src={f4} height={50} />
         </div>

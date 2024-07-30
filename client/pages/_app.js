@@ -14,9 +14,9 @@ export default function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <main className={inter.className}>
-        <div className="flex gap-[0.3rem]">
+        <div className="flex">
           <Sidebar />
-          <div className="flex w-[86%] flex-col ml-[2rem] md:ml-[13rem]">
+          <div className="flex w-[84.5%] flex-col ml-[2rem] md:ml-[12rem]">
             <Header path={router.pathname} />
             <Component {...pageProps} />
           </div>

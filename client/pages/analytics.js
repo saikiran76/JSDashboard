@@ -118,7 +118,7 @@ const Analytics = () => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-4 md:flex-row">
+      <div className="flex flex-col gap-2 md:flex-row">
         <div className="relative ml-3 w-full rounded-lg bg-white p-3 shadow-md md:w-[50%]">
           <div className="absolute right-4 top-6 rounded-md border-[1.5px] border-gray-200 p-2 pl-4 pr-4 text-sm text-gray-500 hidden md:block">
             IN-TRANSIT (463)

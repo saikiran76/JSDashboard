@@ -54,7 +54,7 @@ function Home() {
               <Toggler />
             </div>
             {!toggling ? (
-              <div className="flex flex-wrap space-x-3">
+              <div className="flex flex-wrap">
                 <PieChart data={originPortChartData} title="Origin Port" />
                 <PieChart data={destinationPortChartData} title="Destination Port" />
                 <PieChart data={carrierChartData} title="Carrier" />
