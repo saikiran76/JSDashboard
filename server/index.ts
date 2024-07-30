@@ -10,6 +10,19 @@ app.use(cors({
     optionsSuccessStatus: 200
 }))
 
+app. use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+    "Access-Control-Allow-Methods",
+    "GET, HEAD, OPTIONS, POST, PUT, DELETE");
+    
+    res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    
+    next();
+})
+
 import { ShipmentRouter } from "./routes/shipments";
 import { DocumentRouter } from "./routes/document";
 import { LocationRouter } from "./routes/locations";
