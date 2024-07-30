@@ -1,8 +1,14 @@
 import express from "express";
 import { json } from "body-parser";
 import mongoose from "mongoose"
+import cors from "cors"
 
 const app = express()
+
+app.use(cors({
+    origin: "https://js-dashboard-easw.vercel.app/",
+    optionsSuccessStatus: 200
+}))
 
 import { ShipmentRouter } from "./routes/shipments";
 import { DocumentRouter } from "./routes/document";
@@ -15,7 +21,7 @@ app.use('/api/locations', LocationRouter)
 
 
 const PORT = 4000;
-const dbUri = process.env.MONGO_URL  || "";
+const dbUri = process.env.MONGO_URL || "";
 
 const start = async () =>{
     try{
