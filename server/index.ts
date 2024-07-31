@@ -33,7 +33,7 @@ app.use('/api/documents', DocumentRouter);
 app.use('/api/locations', LocationRouter)
 
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 const dbUri = process.env.MONGO_URL || "";
 
 const start = async () =>{
