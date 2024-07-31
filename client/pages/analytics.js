@@ -44,16 +44,16 @@ const Analytics = () => {
 
   return (
     <div className="w-full bg-gray-100">
-      <div className="mt-4 flex flex-col justify-center gap-8 text-sm text-gray-500 md:flex-row">
-        <div className="flex cursor-pointer items-center gap-2 border-red-600 pb-2 duration-200 hover:border-b-2 hover:text-red-600">
+      <div className="mt-7 md:mt-4 flex flex-col justify-center item-center gap-8 text-sm text-gray-500 md:flex-row">
+        <div className="flex cursor-pointer justify-center items-center gap-2 border-red-600 pb-2 duration-200 hover:border-b-2 hover:text-red-600">
           <RiShipFill />
           <p>Sea</p>
         </div>
-        <div className="flex cursor-pointer items-center gap-2 border-red-600 pb-2 duration-200 hover:border-b-2 hover:text-red-600">
+        <div className="flex cursor-pointer justify-center items-center gap-2 border-red-600 pb-2 duration-200 hover:border-b-2 hover:text-red-600">
           <CiPlane />
           <p>Air</p>
         </div>
-        <div className="flex cursor-pointer items-center gap-2 border-red-600 pb-2 duration-200 hover:border-b-2 hover:text-red-600">
+        <div className="flex cursor-pointer justify-center items-center gap-2 border-red-600 pb-2 duration-200 hover:border-b-2 hover:text-red-600">
           <MdOutlineFireTruck />
           <p>Land</p>
         </div>
@@ -119,14 +119,14 @@ const Analytics = () => {
       </div>
 
       <div className="flex flex-col gap-2 md:flex-row">
-        <div className="relative ml-3 w-full rounded-lg bg-white p-3 shadow-md md:w-[50%]">
+        <div className="relative ml-3 w-[95%] rounded-lg bg-white p-3 shadow-md md:w-[50%]">
           <div className="absolute right-4 top-6 rounded-md border-[1.5px] border-gray-200 p-2 pl-4 pr-4 text-sm text-gray-500 hidden md:block">
             IN-TRANSIT (463)
           </div>
           <MilestonesChart />
         </div>
 
-        <div className="relative ml-3 w-full rounded-lg bg-white p-3 shadow-md md:w-[46%]">
+        <div className="relative ml-3 w-[95%] rounded-lg bg-white p-3 shadow-md md:w-[46%]">
           <DelayChart />
         </div>
       </div>

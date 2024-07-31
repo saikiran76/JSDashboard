@@ -10,7 +10,7 @@ const Sidebar = () => {
   return (
     <div>
       <div
-        className="md:hidden fixed top-0 left-0 p-4 cursor-pointer"
+        className="md:hidden fixed top-3 left-0 p-4 cursor-pointer mr-2"
         onClick={() => setMob(!onMob)}
       >
         <RxHamburgerMenu />

@@ -53,9 +53,9 @@ const DelayChart = () => {
   };
 
   return (
-    <div className="flex w-full flex-col items-center p-2 md:w-1/5">
-      <div className="relative ml-[6rem] md:ml-[20rem] mb-[3rem] mt-3 h-48 w-[30rem]">
-        <h3 className="mb-4 ml-[9.5rem] font-bold">Timelines</h3>
+    <div className="flex w-[80%] flex-col items-center p-2 md:w-1/5">
+      <div className="relative ml-[4rem] md:ml-[20rem] mb-[3rem] mt-3 h-48 w-[25rem] md:w-[30rem]">
+        <h3 className="mb-4 ml-[9.5rem] font-bold w-fit">Timelines</h3>
         <Pie data={data} options={options} />
       </div>
     </div>

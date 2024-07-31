@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
 import useFetchShipments from '../hooks/useFetchShipments';
@@ -7,8 +7,20 @@ import { Loader } from './Loader';
 Chart.register(ArcElement, Tooltip, Legend);
 
 const MilestonesChart = () => {
+  const [fontSize, setFontSize] = useState(window.innerWidth > 350 ? 10 : 5);
   const url = 'https://jsdashboard.onrender.com';
   const { shipments, loading: shipmentsLoading, error: shipmentsError } = useFetchShipments(url);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setFontSize(window.innerWidth > 350 ? 10 : 5);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const milestoneCounts = {
     BOOKED: 0,
@@ -43,6 +55,9 @@ const MilestonesChart = () => {
         labels: {
           usePointStyle: true,
           pointStyle: 'circle',
+          font: {
+            size: fontSize,
+          },
         },
       },
     },
@@ -56,7 +71,7 @@ const MilestonesChart = () => {
   return (
     <div className="flex w-full flex-col items-center p-2 md:w-1/5">
       <h3 className="mb-4 mt-3 font-bold">MileStones</h3>
-      <div className="relative ml-[7rem] md:ml-[20rem] mb-[2rem] mt-3 h-48 w-[30rem]">
+      <div className="relative ml-[2rem] md:ml-[20rem] mb-[2rem] mt-3 h-48 w-[22rem] md:w-[30rem]">
         {shipmentsLoading ? <Loader /> : <Pie data={data} options={options} />}
       </div>
     </div>
