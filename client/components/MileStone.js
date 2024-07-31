@@ -7,7 +7,7 @@ import { Loader } from './Loader';
 Chart.register(ArcElement, Tooltip, Legend);
 
 const MilestonesChart = () => {
-  const [fontSize, setFontSize] = useState(window.innerWidth > 350 ? 10 : 5);
+  const [fontSize, setFontSize] = useState(window.innerWidth > 350 ? 12 : 5);
   const url = 'https://jsdashboard.onrender.com';
   const { shipments, loading: shipmentsLoading, error: shipmentsError } = useFetchShipments(url);
 
@@ -71,7 +71,7 @@ const MilestonesChart = () => {
   return (
     <div className="flex w-full flex-col items-center p-2 md:w-1/5">
       <h3 className="mb-4 mt-3 font-bold">MileStones</h3>
-      <div className="relative ml-[2rem] md:ml-[20rem] mb-[2rem] mt-3 h-48 w-[22rem] md:w-[30rem]">
+      <div className="relative ml-[2rem] md:ml-[20rem] mb-[2rem] mt-3 h-48 w-[22rem] md:w-[30rem] p-4 md:p-0">
         {shipmentsLoading ? <Loader /> : <Pie data={data} options={options} />}
       </div>
     </div>

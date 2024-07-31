@@ -68,13 +68,13 @@ const Analytics = () => {
         </p>
       </div>
 
-      <div className="m-3 flex flex-wrap items-center gap-3 bg-white p-3 text-[0.880rem] shadow-md md:flex-row">
-        <div className="ml-3 flex items-center gap-3 font-bold">
+      <div className="m-3 flex flex-wrap items-center gap-3 bg-white p-3 text-sm md:text-base shadow-md md:flex-row">
+        <div className="ml-3 flex items-center gap-3 font-bold ">
           <p>Size Type</p>
           <select
             value={sizeType}
             onChange={(e) => setSizeType(e.target.value)}
-            className="w-[10rem] rounded-[1.25rem] border-[1px] border-gray-300 bg-white p-[0.6rem] text-sm font-semibold"
+            className="w-[10rem] rounded-[1.25rem] border-[1px] border-gray-300 bg-white p-[0.6rem] text-xs md:tex-sm font-semibold"
           >
             <option value="">Select</option>
             <option value="40HC">40HC</option>
@@ -82,12 +82,12 @@ const Analytics = () => {
           </select>
         </div>
 
-        <div className="ml-5 flex items-center gap-3 font-bold">
+        <div className="ml-5 flex items-center gap-3 font-bold text-sm md:text-base">
           <p>Date Property</p>
           <select
             value={dateProperty}
             onChange={(e) => setDateProperty(e.target.value)}
-            className="w-[10rem] rounded-[1.25rem] border-[1px] border-gray-300 bg-white p-[0.6rem] text-sm font-semibold"
+            className="w-[10rem] rounded-[1.25rem] border-[1px] border-gray-300 bg-white p-[0.6rem] text-xs md:text-sm font-semibold"
           >
             <option value="">Select</option>
             <option value="recipt">Recipt</option>
@@ -98,9 +98,9 @@ const Analytics = () => {
           </select>
         </div>
 
-        <div className="ml-5 flex items-center gap-3 font-bold">
+        {/* <div className="ml-5 flex items-center gap-3 font-bold">
           <p>Period</p>
-        </div>
+        </div> */}
 
         <div className="ml-4 flex gap-3">
           <button

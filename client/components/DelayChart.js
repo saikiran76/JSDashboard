@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
 import useFetchShipments from '../hooks/useFetchShipments';
@@ -7,8 +7,20 @@ import { Loader } from './Loader';
 Chart.register(ArcElement, Tooltip, Legend);
 
 const DelayChart = () => {
+  const [fontSize, setFontSize] = useState(window.innerWidth > 350 ? 12 : 5);
   const url = 'https://jsdashboard.onrender.com';
   const { shipments, loading: shipmentsLoading, error: shipmentsError } = useFetchShipments(url);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setFontSize(window.innerWidth > 350 ? 10 : 5);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   if (shipmentsLoading) return <Loader />;
   if (shipmentsError) return <Loader />;
@@ -46,6 +58,9 @@ const DelayChart = () => {
         labels: {
           usePointStyle: true,
           pointStyle: 'circle',
+          font: {
+            size: fontSize,
+          },
         },
       },
     },
@@ -54,8 +69,8 @@ const DelayChart = () => {
 
   return (
     <div className="flex w-[80%] flex-col items-center p-2 md:w-1/5">
-      <div className="relative ml-[4rem] md:ml-[20rem] mb-[3rem] mt-3 h-48 w-[25rem] md:w-[30rem]">
-        <h3 className="mb-4 ml-[9.5rem] font-bold w-fit">Timelines</h3>
+      <h3 className="mb-4 ml-[3rem] mt-4 font-bold w-fit">Timelines</h3>
+      <div className="relative ml-[4rem] md:ml-[20rem] mb-[3rem] mt-3 h-48 w-[25rem] md:w-[30rem] p-4 md:p-0">
         <Pie data={data} options={options} />
       </div>
     </div>

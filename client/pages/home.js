@@ -40,10 +40,10 @@ function Home() {
 
   return (
     <div className="flex flex-col gap-2 md:flex-row">
-      <div className="flex h-screen flex-col bg-gray-100 w-full">
+      <div className="flex h-screen flex-col w-full">
         <Bookings bookings={bookings} />
         <div className="flex flex-1 p-4">
-          <div className="h-96 w-full overflow-hidden rounded-md bg-white shadow-md">
+          <div className="h-96 w-full overflow-hidden rounded-md shadow-md">
             <MapComponent setMapObject={() => {}} locations={locations} />
           </div>
         </div>

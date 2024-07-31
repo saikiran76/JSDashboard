@@ -16,7 +16,7 @@ const Header = ({ path }) => {
   }
 
   return (
-    <div className="flex w-full flex-row bg-white p-4 shadow-md">
+    <div className="flex w-full flex-row bg-white p-5 shadow-md rounded">
       <div className="flex flex-1 items-center">
         <h1 className="text-2xl font-bold">{title}</h1>
       </div>
