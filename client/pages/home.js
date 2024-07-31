@@ -12,7 +12,7 @@ import Toggler from '../components/Toggler';
 import { Loader } from '../components/Loader'
 import { useSelector } from 'react-redux';
 
-function Home() {
+const Home = () => {
   const url = 'https://jsdashboard.onrender.com';
   const { locations, loading: locationsLoading, error: locationsError } = useFetchLocations(url);
   const { bookings, loading: bookingsLoading, error: bookingsError } = useFetchBookings(url);
@@ -27,7 +27,7 @@ function Home() {
   }
 
   if (bookingsError || shipmentsError || documentsError || locationsError) {
-    return <div className="text-red text-center font-semibold">Error</div>;
+    return <div className="text-red-600 text-center font-semibold">Error</div>;
   }
 
   const {
@@ -40,7 +40,7 @@ function Home() {
 
   return (
     <div className="flex flex-col gap-2 md:flex-row">
-      <div className="flex h-screen flex-col w-full">
+      <div className="flex flex-col w-full">
         <Bookings bookings={bookings} />
         <div className="flex flex-1 p-4">
           <div className="h-96 w-full overflow-hidden rounded-md shadow-md">
@@ -66,7 +66,7 @@ function Home() {
             )}
           </div>
         </div>
-        <div className="flex h-[20rem] flex-col p-4 md:flex-row">
+        <div className="flex flex-col p-4 md:flex-row">
           <div className="mb-4 flex-1 rounded-md bg-white p-4 shadow-md md:mb-0 md:mr-4">
             <h2 className="text-xl font-bold">Latest Documents</h2>
             <LatestDocuments docs={documents} />

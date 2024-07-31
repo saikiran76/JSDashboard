@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 // import { url } from '../utils/constants';
 
 const useFetchBookings = (url) => {
@@ -11,31 +11,31 @@ const useFetchBookings = (url) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchBookings = async () => {
-      try {
-        const response = await fetch(`${url}/api/shipments`);
-        const data = await response.json();
-        const total = data.length;
-        const utilized = data.filter((item) => item.booking_status === 'BOOKED').length;
-        const cancelled = data.filter((item) => item.booking_status === 'CANCELLED').length;
-        const utilization = total > 0 ? (utilized / total) * 100 : 0;
+  const fetchBookings = useCallback(async () => {
+    try {
+      const response = await fetch(`${url}/api/shipments`);
+      const data = await response.json();
+      const total = data.length;
+      const utilized = data.filter((item) => item.booking_status === 'BOOKED').length;
+      const cancelled = data.filter((item) => item.booking_status === 'CANCELLED').length;
+      const utilization = total > 0 ? (utilized / total) * 100 : 0;
 
-        setBookings({
-          total,
-          utilized,
-          cancelled,
-          utilization,
-        });
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchBookings();
+      setBookings({
+        total,
+        utilized,
+        cancelled,
+        utilization,
+      });
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
   }, [url]);
+
+  useEffect(() => {
+    fetchBookings();
+  }, [fetchBookings]);
 
   return { bookings, loading, error };
 };

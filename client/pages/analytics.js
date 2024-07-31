@@ -7,14 +7,13 @@ import DelayChart from '../components/DelayChart';
 import List from '../components/MileStoneAnalytics';
 import ShipmentsTable from '../components/ShipmentsTable';
 import useFetchShipments from '../hooks/useFetchShipments';
-import { Loader } from '../components/Loader';
 
 const Analytics = () => {
   const [sizeType, setSizeType] = useState('');
   const [dateProperty, setDateProperty] = useState('');
   const [filteredData, setFilteredData] = useState([]);
   const url = 'https://jsdashboard.onrender.com';
-  const { shipments, loading } = useFetchShipments(url);
+  const { shipments } = useFetchShipments(url);
 
   const handleFilter = () => {
     let filtered = shipments;
@@ -36,14 +35,11 @@ const Analytics = () => {
     setFilteredData(shipments);
   }, [shipments]);
 
-  if (loading) {
-    return <Loader />;
-  }
 
   const properties = ['loading', 'discharge', 'delivery', 'shipper', 'consignee', 'carrier'];
 
   return (
-    <div className="w-full bg-gray-100">
+    <div className="w-full">
       <div className="mt-7 md:mt-4 flex flex-col justify-center item-center gap-8 text-sm text-gray-500 md:flex-row">
         <div className="flex cursor-pointer justify-center items-center gap-2 border-red-600 pb-2 duration-200 hover:border-b-2 hover:text-red-600">
           <RiShipFill />
@@ -98,10 +94,6 @@ const Analytics = () => {
           </select>
         </div>
 
-        {/* <div className="ml-5 flex items-center gap-3 font-bold">
-          <p>Period</p>
-        </div> */}
-
         <div className="ml-4 flex gap-3">
           <button
             onClick={handleCancel}
@@ -131,13 +123,13 @@ const Analytics = () => {
         </div>
       </div>
 
-      <div className="flex flex-wrap flex-col md:flex-row items-start gap-4 bg-gray-100 p-4 shadow-md">
+      <div className="flex flex-wrap flex-col md:flex-row items-start gap-4 p-4 shadow-md">
         {properties.map((property) => (
           <List key={property} property={property} />
         ))}
       </div>
 
-      <div className="min-h-screen bg-gray-100 p-8">
+      <div className="min-h-screen mt-2">
         <ShipmentsTable data={filteredData} />
       </div>
     </div>

@@ -1,35 +1,34 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 const useFetchLocations = (url, milestone) => {
   const [locations, setLocations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchLocations = async () => {
-      try {
-        let status;
-        const response = await fetch(
-          `${url}/api/locations${milestone ? `?status=${milestone}` : ''}`,
-        );
-        const data = await response.json();
-        if (Array.isArray(data.locations)) {
-          setLocations(data.locations);
-        } else {
-          setLocations(data.map((shipment) => shipment.locations).flat());
-        }
-        // setLocations(data);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
+  const fetchLocations = useCallback(async () => {
+    try {
+      const response = await fetch(
+        `${url}/api/locations${milestone ? `?status=${milestone}` : ''}`
+      );
+      const data = await response.json();
+      if (Array.isArray(data.locations)) {
+        setLocations(data.locations);
+      } else {
+        setLocations(data.map((shipment) => shipment.locations).flat());
       }
-    };
-
-    fetchLocations();
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
   }, [url, milestone]);
+
+  useEffect(() => {
+    fetchLocations();
+  }, [fetchLocations]);
 
   return { locations, loading, error };
 };
+
 
 export default useFetchLocations;

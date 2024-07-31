@@ -10,14 +10,14 @@ const Sidebar = () => {
   return (
     <div>
       <div
-        className="md:hidden fixed top-3 left-0 p-4 cursor-pointer mr-2"
+        className="md:hidden fixed top-3 left-0 p-4 cursor-pointer mr-3"
         onClick={() => setMob(!onMob)}
       >
         <RxHamburgerMenu />
       </div>
 
       <div
-        className={`fixed top-0 left-0 h-screen w-[37%] md:w-[15.75%] rounded-r-[2rem] bg-[#6B120A] transition-transform ${
+        className={`fixed z-50 top-0 left-0 h-screen w-[31%] md:w-[15.75%] rounded-r-[2rem] bg-[#6B120A] transition-transform ${
           onMob ? 'translate-x-0' : '-translate-x-full'
         } md:translate-x-0`}
       >
