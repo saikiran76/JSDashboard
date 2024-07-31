@@ -1,3 +1,5 @@
+'use client'
+
 import React, {useState, useEffect} from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
@@ -7,19 +9,21 @@ import { Loader } from './Loader';
 Chart.register(ArcElement, Tooltip, Legend);
 
 const DelayChart = () => {
-  const [fontSize, setFontSize] = useState(window.innerWidth > 350 ? 12 : 5);
+  const [fontSize, setFontSize] = useState(12);
   const url = 'https://jsdashboard.onrender.com';
   const { shipments, loading: shipmentsLoading, error: shipmentsError } = useFetchShipments(url);
 
   useEffect(() => {
-    const handleResize = () => {
-      setFontSize(window.innerWidth > 350 ? 10 : 5);
-    };
+    if(typeof window !== "undefined"){
+      const handleResize = () => {
+        setFontSize(window.innerWidth > 350 ? 10 : 3);
+      };
 
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+      window.addEventListener('resize', handleResize);
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
   }, []);
 
   if (shipmentsLoading) return <Loader />;
