@@ -17,7 +17,7 @@ const Sidebar = () => {
       </div>
 
       <div
-        className={`fixed z-50 top-0 left-0 h-screen w-[33.5%] md:w-[15.75%] rounded-r-[2rem] bg-[#6B120A] transition-transform ${
+        className={`fixed z-50 top-0 left-0 h-screen w-[35.5%] md:w-[15.75%] rounded-r-[2rem] bg-[#6B120A] transition-transform ${
           onMob ? 'translate-x-0' : '-translate-x-full'
         } md:translate-x-0`}
       >
