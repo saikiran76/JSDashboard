@@ -1,5 +1,7 @@
 # Analytics Dashboard
 
+## Note** : Due to free tier limitation of Render the spin-down behaviour of free instances, the web services on free instance type are automatically spun down after 15 mins of inactivity. So it might take some time for the applicaton to start after letting the app inactive.
+
 ## Libraries used/ Tech-stack
 - Nextjs ⚛️
 - JavaScript and TypeScript🧑‍💻
