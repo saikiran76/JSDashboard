@@ -17,10 +17,8 @@
 - Render as web service (for deploying the backend)
 
 ## Snaps of the projects
-- ![image](https://github.com/user-attachments/assets/9948ec0c-0c99-4e66-a84c-e8b40bbe0aef)
-- ![image](https://github.com/user-attachments/assets/3a856e38-e57c-484e-8a44-13f785097a6a)
-- ![image](https://github.com/user-attachments/assets/8451f7a2-9d0e-46e6-a115-439a1bbc87df)
-
+- ![Dashboard](https://github.com/user-attachments/assets/1a0bcb56-4a27-4cdf-84bc-5f4f5fd5ba6c)
+- ![screencapture-localhost-3000-analytics-2024-07-31-18_24_28](https://github.com/user-attachments/assets/7914c01f-fb7d-4bbc-b273-e7f56f0ed0c3)
 
 ## Local Setup
 - clone using `git clone <git url>`
