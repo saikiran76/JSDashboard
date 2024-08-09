@@ -1,5 +1,7 @@
 # Analytics Dashboard
 
+## Note** : Due to free tier limitation of Render the spin-down behaviour of free instances, the web services on free instance type are automatically spun down after 15 mins of inactivity. So it might take some time for the applicaton to start after letting the app inactive.
+
 ## Libraries used/ Tech-stack
 - Nextjs ⚛️
 - JavaScript and TypeScript🧑‍💻
@@ -15,10 +17,8 @@
 - Render as web service (for deploying the backend)
 
 ## Snaps of the projects
-- ![image](https://github.com/user-attachments/assets/9948ec0c-0c99-4e66-a84c-e8b40bbe0aef)
-- ![image](https://github.com/user-attachments/assets/3a856e38-e57c-484e-8a44-13f785097a6a)
-- ![image](https://github.com/user-attachments/assets/8451f7a2-9d0e-46e6-a115-439a1bbc87df)
-
+- ![screencapture-localhost-3000-home-2024-07-31-18_23_56](https://github.com/user-attachments/assets/e7c21496-113e-401e-8c31-7717e9c7ff14)
+- ![screencapture-localhost-3000-analytics-2024-07-31-18_24_28](https://github.com/user-attachments/assets/7914c01f-fb7d-4bbc-b273-e7f56f0ed0c3)
 
 ## Local Setup
 - clone using `git clone <git url>`
